@@ -1,0 +1,83 @@
+{
+  "name": "Conversation",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the conversation"
+    },
+    "messages": {
+      "type": "array",
+      "description": "Array of chat messages",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "file",
+              "quiz",
+              "voice"
+            ]
+          },
+          "file_url": {
+            "type": "string"
+          },
+          "quiz": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "correct_index": {
+                "type": "number"
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "image_url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "search",
+        "deep_think"
+      ],
+      "default": "normal"
+    },
+    "user_preferences": {
+      "type": "object",
+      "description": "Remembered user preferences"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
